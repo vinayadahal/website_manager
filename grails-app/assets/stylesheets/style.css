@@ -5,11 +5,15 @@
     font-size: 14px;
 }
 
-.h3_title {
+.h3_title, .h3_title_side {
     margin: 20px 5px;
     text-align: center;
     border-bottom: 1px solid #ccc;
     padding: 0px 5px 20px 5px;
+}
+
+.h3_title_side {
+    text-align: left;
 }
 
 .dashboard_container {
@@ -54,4 +58,9 @@
 .dashboard_icons:nth-child(n+5) {
     border-top: none;
 
+}
+
+.list_table_wrap{
+    /*width: 100%;*/
+    margin: 0 5px;
 }

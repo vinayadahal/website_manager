@@ -2,7 +2,7 @@ package websitemanager
 
 class Clients {
 
-    static constraints = {
+    static mapping = {
         version false
     }
 

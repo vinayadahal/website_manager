@@ -15,10 +15,10 @@
         <i class="fa fa-file" style="font-size: 128px;"></i><br/><br/>
         Manage Website
     </g:link>
-    <a href="#" class="dashboard_icons">
+    <g:link controller="manageClient" action="index" params="[id: 1]" class="dashboard_icons">
         <i class="fa fa-user-secret" style="font-size: 128px;"></i><br/><br/>
         Manage Client
-    </a>
+    </g:link>
     <a href="#" class="dashboard_icons">
         <i class="fa fa-user" style="font-size: 128px;"></i><br/><br/>
         Manage Admin

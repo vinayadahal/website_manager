@@ -115,7 +115,7 @@ dataSource:
 environments:
     development:
         dataSource:
-            dbCreate: create-drop
+            dbCreate: update
             url: jdbc:mysql://localhost:3306/websitemanager?auto-reconnect=true
             username: root
             password: ''
