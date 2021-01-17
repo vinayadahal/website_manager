@@ -17,6 +17,26 @@ class ManageClientController {
         render(view: "index", model: [clients: client_list, total_pages: total_pages, record_count: offset])
     }
 
+    def addClient() {
+        render(view: "create")
+    }
+
+    @Transactional
+    def createClient() {
+        Clients client = new Clients()
+        client.address = params.address
+        client.contact = params.contact
+        client.email = params.email
+        client.owner_name = params.owner_name
+        client.client_name = params.client_name
+        if (client.save(flush: true, failOnError: true)) {
+            flash.message = "Client data added for " + params.client_name
+            redirect action: "index", id: "1"
+        } else {
+            println("Unable to save the record")
+        }
+    }
+
     def editClient() {
         def record_id = params.id
         def client_details = Clients.findById(record_id)
@@ -25,7 +45,7 @@ class ManageClientController {
 
     @Transactional
     def updateClient() {
-        Clients client = Clients.get(params.client_id) //id is the primary key
+        Clients client = Clients.get(params.client_id)
         client.address = params.address
         client.contact = params.contact
         client.email = params.email
