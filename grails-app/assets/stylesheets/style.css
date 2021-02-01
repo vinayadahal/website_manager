@@ -60,7 +60,17 @@
 
 }
 
-.list_table_wrap{
+.list_table_wrap {
     /*width: 100%;*/
     margin: 0 5px;
+}
+
+.add_button_position {
+    float: right;
+    margin: 10px;
+}
+
+.btn_override{
+    width: 80px;
+    /*padding: 15px;*/
 }

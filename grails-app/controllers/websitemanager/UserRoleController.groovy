@@ -11,7 +11,8 @@ class UserRoleController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond userRoleService.list(params), model:[userRoleCount: userRoleService.count()]
+        print "Testing:::: " + userRoleService.list(params)
+        respond userRoleService.list(params), model: [userRoleList: userRoleService.list(params), userRoleCount: userRoleService.count()]
     }
 
     def show(Long id) {
@@ -31,7 +32,7 @@ class UserRoleController {
         try {
             userRoleService.save(userRole)
         } catch (ValidationException e) {
-            respond userRole.errors, view:'create'
+            respond userRole.errors, view: 'create'
             return
         }
 
@@ -57,7 +58,7 @@ class UserRoleController {
         try {
             userRoleService.save(userRole)
         } catch (ValidationException e) {
-            respond userRole.errors, view:'edit'
+            respond userRole.errors, view: 'edit'
             return
         }
 
@@ -66,7 +67,7 @@ class UserRoleController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'userRole.label', default: 'UserRole'), userRole.id])
                 redirect userRole
             }
-            '*'{ respond userRole, [status: OK] }
+            '*' { respond userRole, [status: OK] }
         }
     }
 
@@ -81,9 +82,9 @@ class UserRoleController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'userRole.label', default: 'UserRole'), id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -93,7 +94,7 @@ class UserRoleController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'userRole.label', default: 'UserRole'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }
