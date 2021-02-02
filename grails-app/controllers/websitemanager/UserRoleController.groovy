@@ -39,7 +39,7 @@ class UserRoleController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'userRole.label', default: 'UserRole'), userRole.id])
-                redirect userRole
+                redirect(action: "index")
             }
             '*' { respond userRole, [status: CREATED] }
         }
@@ -65,7 +65,7 @@ class UserRoleController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'userRole.label', default: 'UserRole'), userRole.id])
-                redirect userRole
+                redirect(action: "index")
             }
             '*' { respond userRole, [status: OK] }
         }

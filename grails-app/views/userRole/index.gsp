@@ -15,10 +15,27 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <f:table collection="${userRoleList}"/>
+%{--    <f:table collection="${userRoleList}" template="table_userRole" myProperty="Template: view/templates/_fields/"/>--}%
 
-    ${userRoleList}
-%{--<f:table collection="${userRoleList}"/>--}%
+    <table class="table table-striped table-dark" style="margin-top: 25px;" id="index_table">
+        <thead>
+        <tr>
+            <th><g:message code="userRole.role.label" default="Role"/></th>
+            <th><g:message code="userRole.user.label" default="User"/></th>
+        </tr>
+        </thead>
+        <tbody>
+        <g:each in="${userRoleList}" status="i" var="userRoleInstance">
+            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                <td>
+                    ${fieldValue(bean: userRoleInstance, field: "role")}
+                </td>
+                <td>${fieldValue(bean: userRoleInstance, field: "user")}</td>
+            </tr>
+        </g:each>
+        </tbody>
+    </table>
+
     <div class="pagination">
         <g:paginate total="${userRoleCount ?: 0}"/>
     </div>
